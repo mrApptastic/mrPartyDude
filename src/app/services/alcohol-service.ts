@@ -7,7 +7,7 @@ export class AlcoholService {
 
   constructor() { }
 
-  calculatePromille(genstande: number, minutes: number, gender: boolean ): number {
+  calculatePerMille(units: number, minutes: number, gender: boolean ): number {
     // https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholpromille-beregning/
 
     // https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkohol-fakta/
