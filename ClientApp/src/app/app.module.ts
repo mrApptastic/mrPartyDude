@@ -11,7 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
-import { HomeComponent } from './routes/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({

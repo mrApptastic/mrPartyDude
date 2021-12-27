@@ -7,9 +7,9 @@ export class AlcoholService {
 
   constructor() { }
 
-  calculateUnitFromAlcoholPercentage(liquidCl: number, alcoholPercentage: number): number {
+  calculateUnitFromAlcoholabv(liquidCl: number, abv: number): number {
     // https://vinsiderne.dk/artikler/alkohol-vol
-    return liquidCl * alcoholPercentage * 0.7873 / 120;
+    return liquidCl * abv * 0.7873 / 120;
   }
 
   calculatePerMille(units: number, minutes: number, gender: boolean ): number {
