@@ -1,4 +1,5 @@
 export interface Beverage {
+  id: number;
   name: string;
   abv: number;
   amount: number;

@@ -1,11 +1,10 @@
 <div>
-  <h2>Bordered Table</h2>
-  <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>
+  <h2 *ngIf="drinks">Barskab</h2>
   <table class="table table-bordered table-striped table-success">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
+        <th>Navn</th>
+        <th>Mængde (cl.)</th>
         <th>Email</th>
       </tr>
     </thead>
@@ -14,16 +13,6 @@
         <td>John</td>
         <td>Doe</td>
         <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
       </tr>
     </tbody>
   </table>
