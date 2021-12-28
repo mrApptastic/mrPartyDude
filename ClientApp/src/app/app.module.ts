@@ -12,11 +12,14 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
+import { MrMr2Module } from 'mr-mr2';
+import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    BarCabinetComponent,
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
@@ -29,6 +32,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    MrMr2Module,
     ToastrModule.forRoot()
   ],
   providers: [],

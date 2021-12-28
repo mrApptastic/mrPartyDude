@@ -6,7 +6,7 @@ import { Beverage } from '../interfaces/beverage';
   providedIn: 'root'
 })
 export class BeverageService {
-  baseStorage = "beverageStorage22222";
+  baseStorage = "beverageStorage";
   baseList = [
     { id: 1, name : "Carlberg Pilsner", amount: 0.333333333, abv: 4.6, description: "Carlsberg Pilsner er en pilsnerøl fra Carlsberg som blev introduceret i 1904. Den omtales ofte ved sit kælenavn HOF. Etiketten til ølflaskerne er oprindeligt tegnet af Thorvald Bindesbøll i 1904 og er stort set uforandret siden sin introduktion", type : "Øl", subType : "Pilsner", manufacturer : "Carlsberg", country : "Danmark", image: "", rating: null },
     { id: 2, name : "Ale no. 16", amount: 0.5, abv: 5.7, description: "Ale No. 16 fra Bryggeriet Refsvindinge er en mørk, overgæret guldøl. Den delikate øl har en maltet smag med et strejf af nødder, en let ristet aroma og en tilpas sødme, som tilsammen skaber en skøn smagssymfoni.", manufacturer : "Bryggeriet Refsvindinge", type : "Øl", subType : "Ale", country : "Danmark", image: "", rating: null },
