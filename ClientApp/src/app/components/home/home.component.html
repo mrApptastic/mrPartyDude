@@ -12,6 +12,50 @@
   <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration automatically invokes <code>ng build</code> to produce minified, ahead-of-time compiled JavaScript files.</li>
 </ul>
 <p>The <code>ClientApp</code> subdirectory is a standard Angular CLI application. If you open a command prompt in that directory, you can run any <code>ng</code> command (e.g., <code>ng test</code>), or use <code>npm</code> to install extra packages into it.</p>
+
+<div class="container">
+  <h3 class=" text-center chat_header">Chat Application</h3>
+  <div class="messaging">
+    <div class="inbox_msg">
+      <div class="mesgs">
+        <div class="msg_history">
+          <div *ngFor="let msg of messages">
+          {{msg | json}}
+          <div class="incoming_msg" *ngIf="msg.type == 'received'">
+            <div class="incoming_msg_img"> </div>
+            <div class="received_msg">
+              <div class="received_withd_msg">
+                <p>
+                 {{msg.message}}
+                </p>
+                <span class="time_date"> {{msg.date | date:'medium'}} </span>
+              </div>
+            </div>
+          </div>
+          <div class="outgoing_msg" *ngIf="msg.type == 'sent'">
+            <div class="sent_msg">
+              <p>
+                  {{msg.message}}
+              </p>
+              <span class="time_date"> {{msg.date | date:'medium'}}</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <input type="text" class="write_msg" [value]="txtMessage"
+            (input)="txtMessage=$event.target.value" (keydown.enter)="sendMessage()" placeholder="Type a message" />
+            <button class="msg_send_btn" type="button"  (click)="sendMessage()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <!--
   Dashboard
     - Overview of Party Rooms.
