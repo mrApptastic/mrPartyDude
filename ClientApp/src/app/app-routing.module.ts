@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.component';
-import { CounterComponent } from './components/counter/counter.component';
-import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
+import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'counter', component: CounterComponent },
-  { path: 'fetch-data', component: FetchDataComponent },
+  { path: 'chat-room', component: ChatRoomComponent },
   { path: 'bar', component: BarCabinetComponent },
 ];
 

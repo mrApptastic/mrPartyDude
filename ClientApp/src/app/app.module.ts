@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MrMr2Module } from 'mr-mr2';
 import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.component';
 import { ChatService } from './services/chat-service';
+import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ChatService } from './services/chat-service';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    ChatRoomComponent
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,7 @@ export class AlcoholService {
 
   calculateUnitFromAlcoholabv(liquidCl: number, abv: number): number {
     // https://vinsiderne.dk/artikler/alkohol-vol
-    return liquidCl * abv * 0.7873 / 120;
+    return (liquidCl * abv * 0.7873 / 120) * 100;
   }
 
   calculatePerMille(units: number, minutes: number, weight: number, gender: boolean): number {
