@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr";
-import { Message } from "../interfaces/message";
+import { Message } from "../models/message";
 
 @Injectable()
 export class ChatService {

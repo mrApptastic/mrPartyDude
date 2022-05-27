@@ -14,6 +14,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { MrMr2Module } from 'mr-mr2';
 import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.component';
+import { ChatService } from './services/chat-service';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.compon
     MrMr2Module,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    ChatService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

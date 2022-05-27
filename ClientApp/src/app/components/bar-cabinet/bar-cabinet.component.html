@@ -1,4 +1,33 @@
 <div>
-  <h2 *ngIf="drinks">Barskab</h2>
-
+  <h2>Barskab</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Navn</th>
+        <th>Mængde</th>
+        <th>Alcohol %</th>
+        <th>Beskrivelse</th>
+        <th>Type</th>
+        <th>Undertype</th>
+        <th>Bryggeri</th>
+        <th>Land</th>
+        <th>Billede</th>
+        <th>Bedømmelse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let drink of drinks">
+        <td>{{drink?.name}}</td>
+        <td>{{drink?.amount}}</td>
+        <td>{{drink?.abv}}</td>
+        <td>{{drink?.description}}</td>
+        <td>{{drink?.type}}</td>
+        <td>{{drink?.subtype}}</td>
+        <td>{{drink?.manufacturer}}</td>
+        <td>{{drink?.country}}</td>
+        <td>{{drink?.image}}</td>
+        <td>{{drink?.rating}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

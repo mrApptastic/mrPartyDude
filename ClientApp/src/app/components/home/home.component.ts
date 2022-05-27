@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Message } from 'src/app/interfaces/message';
+import { Message } from 'src/app/models/message';
 import { ChatService } from 'src/app/services/chat-service';
 
 @Component({
@@ -13,8 +13,10 @@ export class HomeComponent {
   messages = new Array<Message>();
   message = new Message();
 
-  constructor(private toastr: ToastrService, private chatService: ChatService,
-    private _ngZone: NgZone) {
+  constructor(private toastr: ToastrService,
+    private chatService: ChatService,
+    private _ngZone: NgZone
+    ) {
       this.subscribeToEvents();
     }
 
