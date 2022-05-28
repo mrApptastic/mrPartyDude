@@ -14,7 +14,6 @@ export class BarCabinetComponent implements OnInit {
 
   ngOnInit(): void {
     this.drinks = this.drinkResponsible.getAll();
-    console.log(this.drinks);
   }
 
   addNewDrink() {

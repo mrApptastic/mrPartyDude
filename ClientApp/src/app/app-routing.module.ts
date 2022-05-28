@@ -5,8 +5,7 @@ import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'chat-room', component: ChatRoomComponent },
+  { path: '', component: ChatRoomComponent, pathMatch: 'full' },
   { path: 'bar', component: BarCabinetComponent },
 ];
 

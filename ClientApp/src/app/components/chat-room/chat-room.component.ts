@@ -22,6 +22,9 @@ export class ChatRoomComponent implements OnInit {
   myName = "Buddy";
   myGender = false;
   myWeight = 60;
+  showInfo = true;
+  showDrinkBox = true;
+  showChatBox = true;
 
   constructor(private toastr: ToastrService,
     private chatService: ChatService,
@@ -43,8 +46,8 @@ export class ChatRoomComponent implements OnInit {
     const drink = this.drinks.find(x => x.name === this.selectedDrink);
     if (drink) {
       this.myConsumption.push(drink);
-      let messageText = this.myName + " har indtaget en " + drink?.name + " og " + (this.myGender ? "hendes" : "hans") + " promille er nu på ";
-      messageText += this.calculatePermille();
+      let messageText = "Jeg har indtaget en " + drink?.name + " og min promille er nu på ";
+      messageText += this.calculatePermille().toFixed(3);
 
       this.txtMessage = messageText;
       this.sendMessage();
@@ -67,6 +70,31 @@ export class ChatRoomComponent implements OnInit {
     return this.alcoholService.calculatePerMille(totalUnits, minutes, this.myWeight, this.myGender);
   }
 
+  getName(): string {
+    return localStorage.getItem("myName");
+  }
+
+  setName(name: string): void {
+    localStorage.setItem("myName", name);
+  }
+
+  getWeight(): string {
+    return localStorage.getItem("myName");
+  }
+
+  etWeight(name: string): void {
+    localStorage.setItem("myName", name);
+  }
+
+  changeWeight(): void {
+    this.myWeight = parseFloat(localStorage.getItem("myName"));
+  }
+
+  changeGender(): void {
+    this.myGender = localStorage.getItem("myGender").toLowerCase() === "true";
+  }
+
+
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');
   }
@@ -78,18 +106,19 @@ export class ChatRoomComponent implements OnInit {
       this.message.type = "sent";
       this.message.message = (this.myName ? (this.myName + ": ") : "") + this.txtMessage;
       this.message.date = new Date();
-      this.messages.push(this.message);
+      this.messages.unshift(this.message);
       this.chatService.sendMessage(this.message);
       this.txtMessage = "";
     }
   }
+
   private subscribeToEvents(): void {
 
     this.chatService.messageReceived.subscribe((message: Message) => {
       this._ngZone.run(() => {
         if (message.clientuniqueid !== this.uniqueID) {
           message.type = "received";
-          this.messages.push(message);
+          this.messages.unshift(message);
         }
       });
     });

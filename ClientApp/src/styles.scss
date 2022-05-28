@@ -1,9 +1,9 @@
-$body-bg: peachpuff;
-$body-color: deeppink;
+$body-bg: #4242e7;
+$body-color: #a5a5ff;
 
 $theme-colors: (
-  "primary": deeppink,
-  "success": hotpink,
+  "primary": #a5a5ff,
+  "success": #a5a5ff,
   "danger": #ff4136
 );
 
@@ -13,6 +13,68 @@ $theme-colors: (
 
 @import '~ngx-toastr/toastr-bs4-alert';
 
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+:root {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1280px) {
+  :root {
+      font-size: 12px;
+ }
+}
+@media screen and (max-width: 960px) {
+  :root {
+      font-size: 10px;
+ }
+}
+@media screen and (max-width: 485px) {
+  :root {
+      font-size: 8px;
+ }
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
+p,div,span,input,select,table {
+  font-size: 1.5rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 0.75rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #737397;
 }

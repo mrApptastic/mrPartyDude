@@ -1,27 +1,73 @@
 <div class="container">
-  <h2>About You</h2>
-  <input type="text" placeholder="Navn" [(ngModel)]="myName" />
-  <input type="number" placeholder="Vægt" [(ngModel)]="myWeight" />
-  <label for="genderCheck">Køn:</label>
-  <input type="checkbox" name="genderCheck" [(ngModel)]="myGender" />
-  Party Started: {{myStart | date : 'medium' }}
-  <!-- Min Promille: {{calculatePermille()}} -->
-  <h2>Add Drink</h2>
-  <select [(ngModel)]="selectedDrink">
-    <option *ngFor="let drink of drinks | sort : 'name' : false" [value]="drink?.name">{{drink?.name}} ({{drink?.amount | number}})</option>
-  </select>
-  <button (click)="addDrink()">Add</button>
+  <div class="row mt-3">
+    <div class="ml-3 d-flex justify-content-center align-items-center">
+      <input type="checkbox" [(ngModel)]="showInfo" />
+    </div>
+    <div class="ml-3">
+      <h3>Dine oplysninger:</h3>
+    </div>
+  </div>
+  <div class="row" [hidden]="!showInfo">
+    <div class="col-md-3">
+      <label>Navn:</label>
+      <input class="w-100" type="text" placeholder="Navn" [(ngModel)]="myName" />
+    </div>
+    <div class="col-md-2">
+      <label>Vægt:</label>
+      <input  class="w-100" type="number" placeholder="Vægt" [(ngModel)]="myWeight" />
+    </div>
+    <div class="col-md-2">
+      <label for="genderCheck">Kvinde:</label>
+      <input type="checkbox" name="genderCheck" [(ngModel)]="myGender" />
+    </div>
+    <div>
+    </div>
+    <div class="col-md-2">
+      Party start: {{myStart | date : 'dd-MM-yy HH:mm:ss' }}
+    </div>
+    <div class="col-md-3">
+      Promille: {{calculatePermille() | number}}
+    </div>
+  </div>
   <hr/>
-  <h2>Type Message</h2>
-  <div class="type_msg">
-    <div class="input_msg_write">
-      <input type="text" class="write_msg" [value]="txtMessage"
+  <div class="row mt-3">
+    <div class="ml-3 d-flex justify-content-center align-items-center">
+      <input type="checkbox" [(ngModel)]="showDrinkBox" />
+    </div>
+    <div class="ml-3">
+      <h3>Tilføj Drink:</h3>
+    </div>
+  </div>
+  <div class="row" [hidden]="!showDrinkBox">
+    <div class="col-sm-9">
+      <select [(ngModel)]="selectedDrink" class="w-100">
+        <option *ngFor="let drink of drinks | sort : 'name' : false" [value]="drink?.name">{{drink?.name}} ({{drink?.amount | number}})</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn-success" (click)="addDrink()">Drik ud!</button>
+    </div>
+  </div>
+  <hr/>
+  <div class="row mt-3">
+    <div class="ml-3 d-flex justify-content-center align-items-center">
+      <input type="checkbox" [(ngModel)]="showChatBox" />
+    </div>
+    <div class="ml-3">
+      <h3>Skriv Besked:</h3>
+    </div>
+  </div>
+  <div class="row" [hidden]="!showChatBox">
+    <div class="col-sm-9">
+      <input type="text" class="write_msg w-100" [value]="txtMessage"
       (input)="txtMessage=$event.target.value" (keydown.enter)="sendMessage()" placeholder="Type a message" />
+    </div>
+    <div class="col-sm-3">
       <button class="msg_send_btn btn-success" type="button"  (click)="sendMessage()">Send Besked</button>
     </div>
   </div>
   <hr/>
-  <h3 class=" text-center chat_header">Alcohol Chat</h3>
+  <h3 class="chat_header">Alcohol Chat</h3>
   <div class="messaging">
     <div class="inbox_msg">
       <div class="mesgs">
@@ -35,7 +81,7 @@
                 <p>
                  {{msg.message}}
                 </p>
-                <span class="time_date"> {{msg.date | date:'medium'}} </span>
+                <span class="time_date"> {{msg.date | date : 'dd-MM-yy HH:mm:ss'}} </span>
               </div>
             </div>
           </div>
@@ -44,7 +90,7 @@
               <p>
                   {{msg.message}}
               </p>
-              <span class="time_date"> {{msg.date | date:'medium'}}</span>
+              <span class="time_date"> {{msg.date | date : 'dd-MM-yy HH:mm:ss'}}</span>
             </div>
           </div>
           </div>
