@@ -2,8 +2,8 @@ $body-bg: peachpuff;
 $body-color: deeppink;
 
 $theme-colors: (
-  "primary": #0074d9,
-  "success": blue,
+  "primary": deeppink,
+  "success": hotpink,
   "danger": #ff4136
 );
 
@@ -12,3 +12,7 @@ $theme-colors: (
 @import "~bootstrap/scss/bootstrap";
 
 @import '~ngx-toastr/toastr-bs4-alert';
+
+:root {
+
+}

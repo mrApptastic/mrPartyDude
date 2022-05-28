@@ -1,36 +1,38 @@
-<div>
+<div class="container-fluid">
   <h2>Barskab</h2>
   <button class="pull-right" (click)="addNewDrink()">Tilføj ny</button>
-  <table>
-    <thead>
-      <tr>
-        <th>Navn</th>
-        <th>Mængde</th>
-        <th>Alcohol %</th>
-        <!-- <th>Beskrivelse</th> -->
-        <th>Type</th>
-        <!-- <th>Undertype</th> -->
-        <th>Bryggeri</th>
-        <th>Land</th>
-        <!-- <th>Billede</th>
-        <th>Bedømmelse</th> -->
-        <th>Slet</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr  *ngFor="let drink of drinks">
-        <td><input type="text" [(ngModel)]="drink.name" (ngModelChange)="updateDrink(drink)" /></td>
-        <td><input type="number" step="0.1" [(ngModel)]="drink.amount" (ngModelChange)="updateDrink(drink)" /></td>
-        <td><input type="number" step="0.1" [(ngModel)]="drink.abv" (ngModelChange)="updateDrink(drink)" /></td>
-        <!-- <td>{{drink?.description}}</td> -->
-        <td><input type="text" [(ngModel)]="drink.type" (ngModelChange)="updateDrink(drink)" /></td>
-        <!-- <td>{{drink?.subtype}}</td> -->
-        <td><input type="text" [(ngModel)]="drink.manufacturer" (ngModelChange)="updateDrink(drink)" /></td>
-        <td><input type="text" [(ngModel)]="drink.country" (ngModelChange)="updateDrink(drink)" /></td>
-        <!-- <td>{{drink?.image}}</td>
-        <td>{{drink?.rating}}</td> -->
-        <th><button (click)="deleteDrink(drink)">Slet</button></th>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Navn</th>
+          <th>Mængde</th>
+          <th>Alcohol %</th>
+          <!-- <th>Beskrivelse</th> -->
+          <th>Type</th>
+          <!-- <th>Undertype</th> -->
+          <th>Bryggeri</th>
+          <th>Land</th>
+          <!-- <th>Billede</th>
+          <th>Bedømmelse</th> -->
+          <th>Slet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let drink of drinks">
+          <td><input type="text" [(ngModel)]="drink.name" (ngModelChange)="updateDrink(drink)" /></td>
+          <td><input type="number" step="0.1" [(ngModel)]="drink.amount" (ngModelChange)="updateDrink(drink)" /></td>
+          <td><input type="number" step="0.1" [(ngModel)]="drink.abv" (ngModelChange)="updateDrink(drink)" /></td>
+          <!-- <td>{{drink?.description}}</td> -->
+          <td><input type="text" [(ngModel)]="drink.type" (ngModelChange)="updateDrink(drink)" /></td>
+          <!-- <td>{{drink?.subtype}}</td> -->
+          <td><input type="text" [(ngModel)]="drink.manufacturer" (ngModelChange)="updateDrink(drink)" /></td>
+          <td><input type="text" [(ngModel)]="drink.country" (ngModelChange)="updateDrink(drink)" /></td>
+          <!-- <td>{{drink?.image}}</td>
+          <td>{{drink?.rating}}</td> -->
+          <th><button (click)="deleteDrink(drink)">Slet</button></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
