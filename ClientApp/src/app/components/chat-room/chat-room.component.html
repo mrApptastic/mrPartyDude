@@ -1,29 +1,29 @@
 <div class="container">
   <div class="row mt-3">
     <div class="ml-3 d-flex justify-content-center align-items-center">
-      <input type="checkbox" [(ngModel)]="showInfo" />
+      <input type="checkbox" [(ngModel)]="myParty.showInfo" (ngModelChange)="setParty(myParty)" />
     </div>
     <div class="ml-3">
       <h3>Dine oplysninger:</h3>
     </div>
   </div>
-  <div class="row" [hidden]="!showInfo">
+  <div class="row" [hidden]="!myParty?.showInfo">
     <div class="col-md-3">
       <label>Navn:</label>
-      <input class="w-100" type="text" placeholder="Navn" [(ngModel)]="myName" />
+      <input class="w-100" type="text" placeholder="Navn" [(ngModel)]="myParty.name" (ngModelChange)="setParty(myParty)" />
     </div>
     <div class="col-md-2">
       <label>Vægt:</label>
-      <input  class="w-100" type="number" placeholder="Vægt" [(ngModel)]="myWeight" />
+      <input  class="w-100" type="number" placeholder="Vægt" [(ngModel)]="myParty.weight" (ngModelChange)="setParty(myParty)" />
     </div>
     <div class="col-md-2">
       <label for="genderCheck">Kvinde:</label>
-      <input type="checkbox" name="genderCheck" [(ngModel)]="myGender" />
+      <input type="checkbox" name="genderCheck" [(ngModel)]="myParty.gender" (ngModelChange)="setParty(myParty)" />
     </div>
     <div>
     </div>
     <div class="col-md-2">
-      Party start: {{myStart | date : 'dd-MM-yy HH:mm:ss' }}
+      Party start: {{myParty?.start | date : 'dd-MM-yy HH:mm:ss' }}
     </div>
     <div class="col-md-3">
       Promille: {{calculatePermille() | number}}
@@ -32,13 +32,13 @@
   <hr/>
   <div class="row mt-3">
     <div class="ml-3 d-flex justify-content-center align-items-center">
-      <input type="checkbox" [(ngModel)]="showDrinkBox" />
+      <input type="checkbox" [(ngModel)]="myParty.showDrinkBox" (ngModelChange)="setParty(myParty)" />
     </div>
     <div class="ml-3">
       <h3>Tilføj Drink:</h3>
     </div>
   </div>
-  <div class="row" [hidden]="!showDrinkBox">
+  <div class="row" [hidden]="!myParty?.showDrinkBox">
     <div class="col-sm-9">
       <select [(ngModel)]="selectedDrink" class="w-100">
         <option *ngFor="let drink of drinks | sort : 'name' : false" [value]="drink?.name">{{drink?.name}} ({{drink?.amount | number}})</option>
@@ -51,13 +51,13 @@
   <hr/>
   <div class="row mt-3">
     <div class="ml-3 d-flex justify-content-center align-items-center">
-      <input type="checkbox" [(ngModel)]="showChatBox" />
+      <input type="checkbox" [(ngModel)]="myParty.showChatBox" (ngModelChange)="setParty(myParty)" />
     </div>
     <div class="ml-3">
       <h3>Skriv Besked:</h3>
     </div>
   </div>
-  <div class="row" [hidden]="!showChatBox">
+  <div class="row" [hidden]="!myParty?.showChatBox">
     <div class="col-sm-9">
       <input type="text" class="write_msg w-100" [value]="txtMessage"
       (input)="txtMessage=$event.target.value" (keydown.enter)="sendMessage()" placeholder="Type a message" />
@@ -101,21 +101,3 @@
 
   </div>
 </div>
-
-
-<!--
-  Dashboard
-    - Overview of Party Rooms.
-    - Add Party Room.
-    - Navigation to Party Room.
-    - Alcohol Stats.
-  Party Room:
-    - Chat with friends
-    -
-  Bar Cabinet.
-
-  Drunken Buddies.
-  Playlist
-    - Upload songs
-    - Share song with
--->

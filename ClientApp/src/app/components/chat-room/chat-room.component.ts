@@ -17,14 +17,17 @@ export class ChatRoomComponent implements OnInit {
   message = new Message();
   selectedDrink: string;
   drinks: Beverage[] = new Array();
-  myConsumption : Beverage[] = new Array();
-  myStart: number = new Date().getTime();
-  myName = "Buddy";
-  myGender = false;
-  myWeight = 60;
-  showInfo = true;
-  showDrinkBox = true;
-  showChatBox = true;
+  baseParty = {
+    start: new Date().getTime(),
+    name: "Buddy",
+    gender: false,
+    weight: 60,
+    consumption:  new Array(),
+    showInfo: true,
+    showDrinkBox: true,
+    showChatBox: true
+  };
+  myParty = JSON.parse(JSON.stringify(this.baseParty));
 
   constructor(private toastr: ToastrService,
     private chatService: ChatService,
@@ -36,6 +39,12 @@ export class ChatRoomComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.myParty = this.getParty();
+
+    if (this.calculatePermille() === 0) {
+      this.myParty =JSON.parse(JSON.stringify(this.baseParty));
+    }
+
     this.drinks = this.beverageService.getAll();
     if (this.drinks?.length > 0) {
       this.selectedDrink = this.drinks[0]?.name;
@@ -45,7 +54,8 @@ export class ChatRoomComponent implements OnInit {
   addDrink(): void {
     const drink = this.drinks.find(x => x.name === this.selectedDrink);
     if (drink) {
-      this.myConsumption.push(drink);
+      this.myParty.consumption.push(drink);
+      this.setParty(this.myParty);
       let messageText = "Jeg har indtaget en " + drink?.name + " og min promille er nu på ";
       messageText += this.calculatePermille().toFixed(3);
 
@@ -57,7 +67,7 @@ export class ChatRoomComponent implements OnInit {
   calculatePermille(): number {
     let totalUnits = 0;
 
-    for (const drink of this.myConsumption) {
+    for (const drink of this.myParty.consumption) {
       totalUnits += this.alcoholService.calculateUnitFromAlcoholabv(drink.amount, drink.abv);
     }
 
@@ -65,35 +75,28 @@ export class ChatRoomComponent implements OnInit {
       return 0;
     }
 
-    const minutes = (new Date().getTime() - this.myStart) / 60000;
+    const minutes = (new Date().getTime() - this.myParty.start) / 60000;
 
-    return this.alcoholService.calculatePerMille(totalUnits, minutes, this.myWeight, this.myGender);
+    return this.alcoholService.calculatePerMille(totalUnits, minutes, this.myParty.weight, this.myParty.gender);
   }
 
-  getName(): string {
-    return localStorage.getItem("myName");
+  getParty(): Party {
+    const storage = localStorage.getItem("myParty");
+
+    if (storage) {
+      try {
+        return JSON.parse(storage) as Party;
+      } catch {
+        return JSON.parse(JSON.stringify(this.baseParty));
+      }
+    }
+
+    return  JSON.parse(JSON.stringify(this.baseParty));
   }
 
-  setName(name: string): void {
-    localStorage.setItem("myName", name);
+  setParty(party: Party): void {
+    localStorage.setItem("myParty", JSON.stringify(party));
   }
-
-  getWeight(): string {
-    return localStorage.getItem("myName");
-  }
-
-  etWeight(name: string): void {
-    localStorage.setItem("myName", name);
-  }
-
-  changeWeight(): void {
-    this.myWeight = parseFloat(localStorage.getItem("myName"));
-  }
-
-  changeGender(): void {
-    this.myGender = localStorage.getItem("myGender").toLowerCase() === "true";
-  }
-
 
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');
@@ -104,7 +107,7 @@ export class ChatRoomComponent implements OnInit {
       this.message = new Message();
       this.message.clientuniqueid = this.uniqueID;
       this.message.type = "sent";
-      this.message.message = (this.myName ? (this.myName + ": ") : "") + this.txtMessage;
+      this.message.message = (this.myParty?.name ? (this.myParty?.name + ": ") : "") + this.txtMessage;
       this.message.date = new Date();
       this.messages.unshift(this.message);
       this.chatService.sendMessage(this.message);
@@ -123,4 +126,15 @@ export class ChatRoomComponent implements OnInit {
       });
     });
   }
+}
+
+interface Party {
+  start: number;
+  name: string;
+  gender: boolean;
+  weight: number;
+  consumption: Beverage[];
+  showInfo: boolean;
+  showDrinkBox: boolean;
+  showChatBox: boolean;
 }
