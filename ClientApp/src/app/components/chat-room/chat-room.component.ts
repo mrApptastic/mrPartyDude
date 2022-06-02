@@ -41,7 +41,7 @@ export class ChatRoomComponent implements OnInit {
   ngOnInit(): void {
     this.myParty = this.getParty();
 
-    if (this.calculatePermille() === 0) {
+    if (this.calculatePermille() <= 0) {
       this.myParty =JSON.parse(JSON.stringify(this.baseParty));
     }
 
@@ -57,7 +57,7 @@ export class ChatRoomComponent implements OnInit {
       this.myParty.consumption.push(drink);
       this.setParty(this.myParty);
       let messageText = "Jeg har indtaget en " + drink?.name + " og min promille er nu på ";
-      messageText += this.calculatePermille().toFixed(3);
+      messageText += this.calculatePermille().toFixed(3) + ".";
 
       this.txtMessage = messageText;
       this.sendMessage();
