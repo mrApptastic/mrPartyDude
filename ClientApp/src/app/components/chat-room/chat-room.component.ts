@@ -42,7 +42,9 @@ export class ChatRoomComponent implements OnInit {
     this.myParty = this.getParty();
 
     if (this.calculatePermille() <= 0) {
-      this.myParty =JSON.parse(JSON.stringify(this.baseParty));
+      const baseParty = JSON.parse(JSON.stringify(this.baseParty));
+      this.myParty.start = baseParty.start;
+      this.myParty.consumption = baseParty.consumption;
     }
 
     this.drinks = this.beverageService.getAll();
