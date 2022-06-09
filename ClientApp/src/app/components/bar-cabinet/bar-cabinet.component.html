@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr  *ngFor="let drink of drinks">
+        <tr *ngFor="let drink of drinks">
           <td><input type="text" [(ngModel)]="drink.name" (ngModelChange)="updateDrink(drink)" /></td>
           <td><input type="number" step="0.1" [(ngModel)]="drink.amount" (ngModelChange)="updateDrink(drink)" /></td>
           <td><input type="number" step="0.1" [(ngModel)]="drink.abv" (ngModelChange)="updateDrink(drink)" /></td>

@@ -36,6 +36,12 @@
       Beskrivelse: {{getWarningLevel()}}
     </div>
   </div>
+  <div *ngIf="myParty.consumption?.length > 0" class="row" [hidden]="!myParty?.showInfo">
+    <label>Alkoholindtag:</label><br/>
+    <ul style="list-style: none;">
+      <li *ngFor="let drink of myParty.consumption">{{drink?.name}} ({{drink?.amount}})</li>
+    </ul>
+  </div>
   <hr/>
   <div class="row mt-3">
     <div class="ml-3 d-flex justify-content-center align-items-center">

@@ -34,7 +34,7 @@ export class AlcoholService {
     } else if (permille <= 0.2) {
       return "Dine øjnes evne til hurtigt at fokusere og omstille sig fra lys til mørke er forringet."
     } else if (permille <= 0.5) {
-      return "Din evne til på en gang at opfatte situationer og samtidigt udføre præcise bevægelser er forringet og din synsvinklen indsnævret."
+      return "Din evne til på en gang at opfatte situationer og samtidigt udføre præcise bevægelser er forringet og din synsvinkel indsnævret."
     } else if (permille <= 0.8) {
       return "Du har nedsat koordinationsevne og øget reaktionstid."
     } else if (permille <= 1.0) {
