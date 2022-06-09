@@ -82,6 +82,14 @@ export class ChatRoomComponent implements OnInit {
     return this.alcoholService.calculatePerMille(totalUnits, minutes, this.myParty.weight, this.myParty.gender);
   }
 
+  getSoberTime(): string {
+    return this.alcoholService.getEstimatedSoberTime(this.calculatePermille()).toISOString();
+  }
+
+  getWarningLevel(): string {
+    return this.alcoholService.getWarningLevel(this.calculatePermille());
+  }
+
   getParty(): Party {
     const storage = localStorage.getItem("myParty");
 
