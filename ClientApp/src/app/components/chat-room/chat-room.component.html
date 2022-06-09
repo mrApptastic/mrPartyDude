@@ -37,9 +37,9 @@
     </div>
   </div>
   <div *ngIf="myParty.consumption?.length > 0" class="row" [hidden]="!myParty?.showInfo">
-    <label>Alkoholindtag:</label><br/>
-    <ul style="list-style: none;">
-      <li *ngFor="let drink of myParty.consumption">{{drink?.name}} ({{drink?.amount}})</li>
+    <p style="margin-left: 1rem;">Alkoholindtag:</p>
+    <ul style="list-style: none; margin-top: 2rem">
+      <li *ngFor="let drink of myParty.consumption">{{drink?.name}} ({{drink?.amount | number}})</li>
     </ul>
   </div>
   <hr/>
