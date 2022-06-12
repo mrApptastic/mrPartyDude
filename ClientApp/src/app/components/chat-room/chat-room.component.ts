@@ -14,20 +14,19 @@ import { ChatService } from 'src/app/services/chat-service';
 export class ChatRoomComponent implements OnInit {
   txtMessage = "";
   uniqueID: string = new Date().getTime().toString();
-  messages = new Array<Message>();
   message = new Message();
   selectedDrink: string;
-  drinks: Beverage[] = new Array();
+  drinks = new Array<Beverage>();
   baseParty = {
     start: new Date().getTime(),
     name: "Buddy",
     gender: false,
     weight: 60,
-    consumption:  new Array(),
+    consumption: new Array<Beverage>(),
     showInfo: true,
     showDrinkBox: true,
     showChatBox: true,
-    messages: new Array()
+    messages: new Array<Message>()
   };
   myParty = JSON.parse(JSON.stringify(this.baseParty)) as Party;
 
@@ -151,7 +150,6 @@ export class ChatRoomComponent implements OnInit {
       this.message.type = "sent";
       this.message.message = (this.myParty?.name ? (this.myParty?.name + ": ") : "") + this.txtMessage;
       this.message.date = new Date();
-      // this.messages.unshift(this.message);
       this.myParty.messages.unshift(this.message);
       this.setParty(this.myParty);
       this.chatService.sendMessage(this.message);
@@ -165,8 +163,7 @@ export class ChatRoomComponent implements OnInit {
       this._ngZone.run(() => {
         if (message.clientuniqueid !== this.uniqueID) {
           message.type = "received";
-          // this.messages.unshift(message);
-          this.myParty.messages.unshift(this.message);
+          this.myParty.messages.unshift(message);
           this.setParty(this.myParty);
         }
       });
