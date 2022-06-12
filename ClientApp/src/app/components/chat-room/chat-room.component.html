@@ -85,7 +85,7 @@
     <div class="inbox_msg">
       <div class="mesgs">
         <div class="msg_history">
-          <div *ngFor="let msg of messages">
+          <div *ngFor="let msg of myParty?.messages">
           <!-- {{msg | json}} -->
           <div class="incoming_msg" *ngIf="msg.type == 'received'">
             <div class="incoming_msg_img"> </div>

@@ -16,6 +16,7 @@ import { MrMr2Module } from 'mr-mr2';
 import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.component';
 import { ChatService } from './services/chat-service';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
+import { PartyListComponent } from './components/party-list/party-list.component';
 
 
 @NgModule({
@@ -26,12 +27,13 @@ import { ChatRoomComponent } from './components/chat-room/chat-room.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ChatRoomComponent
+    ChatRoomComponent,
+    PartyListComponent
   ],
   imports: [
-    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,

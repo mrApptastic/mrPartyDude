@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Beverage } from 'src/app/interfaces/beverage';
+import { Party } from 'src/app/interfaces/party';
 import { Message } from 'src/app/models/message';
 import { AlcoholService } from 'src/app/services/alcohol.service';
 import { BeverageService } from 'src/app/services/beverage.service';
@@ -25,9 +26,10 @@ export class ChatRoomComponent implements OnInit {
     consumption:  new Array(),
     showInfo: true,
     showDrinkBox: true,
-    showChatBox: true
+    showChatBox: true,
+    messages: new Array()
   };
-  myParty = JSON.parse(JSON.stringify(this.baseParty));
+  myParty = JSON.parse(JSON.stringify(this.baseParty)) as Party;
 
   constructor(private toastr: ToastrService,
     private chatService: ChatService,
@@ -42,15 +44,45 @@ export class ChatRoomComponent implements OnInit {
     this.myParty = this.getParty();
 
     if (this.calculatePermille() <= 0) {
+      this.storeParty();
+
       const baseParty = JSON.parse(JSON.stringify(this.baseParty));
       this.myParty.start = baseParty.start;
       this.myParty.consumption = baseParty.consumption;
+      this.myParty.messages = baseParty.messages;
     }
 
     this.drinks = this.beverageService.getAll();
     if (this.drinks?.length > 0) {
       this.selectedDrink = this.drinks[0]?.name;
     }
+  }
+
+  storeParty(): void {
+    if (this.myParty?.consumption?.length <= 0) {
+        return;
+    }
+
+    const storage = localStorage.getItem("partyArray");
+    let partyArray = new Array();
+
+    if (storage) {
+      try {
+        partyArray = JSON.parse(storage) as Party[];
+      } catch (e) {
+        throw (e);
+      }
+    } else {
+      partyArray = new Array();
+    }
+
+    if (partyArray?.some(x => x.start === this.myParty.start)) {
+      return;
+    }
+
+    partyArray.unshift(JSON.parse(JSON.stringify(this.myParty)));
+
+    localStorage.setItem("partyArray", JSON.stringify(partyArray));
   }
 
   addDrink(): void {
@@ -119,7 +151,9 @@ export class ChatRoomComponent implements OnInit {
       this.message.type = "sent";
       this.message.message = (this.myParty?.name ? (this.myParty?.name + ": ") : "") + this.txtMessage;
       this.message.date = new Date();
-      this.messages.unshift(this.message);
+      // this.messages.unshift(this.message);
+      this.myParty.messages.unshift(this.message);
+      this.setParty(this.myParty);
       this.chatService.sendMessage(this.message);
       this.txtMessage = "";
     }
@@ -131,20 +165,11 @@ export class ChatRoomComponent implements OnInit {
       this._ngZone.run(() => {
         if (message.clientuniqueid !== this.uniqueID) {
           message.type = "received";
-          this.messages.unshift(message);
+          // this.messages.unshift(message);
+          this.myParty.messages.unshift(this.message);
+          this.setParty(this.myParty);
         }
       });
     });
   }
-}
-
-interface Party {
-  start: number;
-  name: string;
-  gender: boolean;
-  weight: number;
-  consumption: Beverage[];
-  showInfo: boolean;
-  showDrinkBox: boolean;
-  showChatBox: boolean;
 }

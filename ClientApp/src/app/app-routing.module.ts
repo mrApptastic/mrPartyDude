@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.component';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { HomeComponent } from './components/home/home.component';
+import { PartyListComponent } from './components/party-list/party-list.component';
 
 const routes: Routes = [
   { path: '', component: ChatRoomComponent, pathMatch: 'full' },
   { path: 'bar', component: BarCabinetComponent },
+  { path: 'list', component: PartyListComponent }
 ];
 
 @NgModule({
