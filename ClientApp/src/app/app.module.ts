@@ -17,6 +17,7 @@ import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.compon
 import { ChatService } from './services/chat-service';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { PartyListComponent } from './components/party-list/party-list.component';
+import { InfoComponent } from './components/info/info.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PartyListComponent } from './components/party-list/party-list.component
     CounterComponent,
     FetchDataComponent,
     ChatRoomComponent,
-    PartyListComponent
+    PartyListComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

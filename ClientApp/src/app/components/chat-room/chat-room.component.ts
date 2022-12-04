@@ -19,7 +19,7 @@ export class ChatRoomComponent implements OnInit {
   drinks = new Array<Beverage>();
   baseParty = {
     start: new Date().getTime(),
-    name: "Buddy",
+    name: "Don Fernando",
     gender: false,
     weight: 60,
     consumption: new Array<Beverage>(),

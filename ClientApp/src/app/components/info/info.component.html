@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="ml-3 d-flex justify-content-center align-items-center">
+      <input type="checkbox" [(ngModel)]="myParty.showInfo" (ngModelChange)="setParty(myParty)" />
+    </div>
+    <div class="ml-3">
+      <h3>Dine oplysninger:</h3>
+    </div>
+  </div>
+  <div class="row" [hidden]="!myParty?.showInfo">
+    <div class="col-md-6">
+      <label>Navn:</label>
+      <input class="w-100" type="text" placeholder="Navn" [(ngModel)]="myParty.name" (ngModelChange)="setParty(myParty)" />
+    </div>
+    <div class="col-md-4">
+      <label>Vægt:</label>
+      <input  class="w-100" type="number" placeholder="Vægt" [(ngModel)]="myParty.weight" (ngModelChange)="setParty(myParty)" />
+    </div>
+    <div class="col-md-2">
+      <label for="genderCheck">Kvinde:</label>
+      <input type="checkbox" name="genderCheck" [(ngModel)]="myParty.gender" (ngModelChange)="setParty(myParty)" />
+    </div>
+  </div>
+  <div class="row" [hidden]="!myParty?.showInfo">
+    <div class="col-md-2">
+      Party start: {{myParty?.start | date : 'dd-MM-yy HH:mm:ss' }}
+    </div>
+    <div class="col-md-2">
+      Promille: {{calculatePermille() | number}}<br/>
+    </div>
+    <div class="col-md-2">
+      Ædru: {{getSoberTime() | date : 'dd-MM-yy HH:mm:ss'}}
+    </div>
+    <div class="col-md-6">
+      Beskrivelse: {{getWarningLevel()}}
+    </div>
+  </div>
+  <div *ngIf="myParty.consumption?.length > 0" class="row" [hidden]="!myParty?.showInfo">
+    <p style="margin-left: 1rem;">Alkoholindtag:</p>
+    <ul style="list-style: none; margin-top: 2rem">
+      <li *ngFor="let drink of myParty.consumption">{{drink?.name}} ({{drink?.amount | number}})</li>
+    </ul>
+  </div>
+  <hr/>
+</div>

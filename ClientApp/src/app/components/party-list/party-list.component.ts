@@ -16,7 +16,9 @@ export class PartyListComponent implements OnInit {
 
     if (storage) {
       try {
-        this.partyArray = JSON.parse(storage) as Party[];
+        this.partyArray = (JSON.parse(storage) as Party[]).sort(function(a, b) {
+          return b.start - a.start;
+        });
       } catch (e) {
         this.partyArray = new Array();
       }

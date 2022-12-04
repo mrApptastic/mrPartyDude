@@ -1,9 +1,11 @@
 <div class="container">
   <h2>Festeroversigt</h2>
-  {{partyArray[0].start}}
   <div *ngIf="partyArray?.length > 0">
     <ul style="list-style: none; margin-top: 2rem">
-      <li *ngFor="let party of partyArray">{{party?.start}}</li>
+      <li *ngFor="let party of partyArray">
+        {{party?.start | date : 'dd-MM-yyyy HH:mm'}}
+        {{party | json}}
+      </li>
     </ul>
   </div>
 </div>
