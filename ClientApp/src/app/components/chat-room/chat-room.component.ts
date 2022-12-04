@@ -88,12 +88,16 @@ export class ChatRoomComponent implements OnInit {
     const drink = this.drinks.find(x => x.name === this.selectedDrink);
     if (drink) {
       this.myParty.consumption.push(drink);
-      this.setParty(this.myParty);
       let messageText = "Jeg har indtaget en " + drink?.name + " og min promille er nu på ";
       messageText += this.calculatePermille().toFixed(3) + ".";
 
       this.txtMessage = messageText;
       this.sendMessage();
+
+      setTimeout(() => {
+        console.log(this.myParty);
+        this.setParty(this.myParty);
+      }, 400);
     }
   }
 
@@ -151,7 +155,6 @@ export class ChatRoomComponent implements OnInit {
       this.message.message = (this.myParty?.name ? (this.myParty?.name + ": ") : "") + this.txtMessage;
       this.message.date = new Date();
       this.myParty.messages.unshift(this.message);
-      this.setParty(this.myParty);
       this.chatService.sendMessage(this.message);
       this.txtMessage = "";
     }
