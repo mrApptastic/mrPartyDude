@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { ToastrModule } from 'ngx-toastr';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
@@ -18,6 +17,7 @@ import { ChatService } from './services/chat-service';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { PartyListComponent } from './components/party-list/party-list.component';
 import { InfoComponent } from './components/info/info.component';
+import { UnitPipe } from './pipes/unit.pipe';
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import { InfoComponent } from './components/info/info.component';
     FetchDataComponent,
     ChatRoomComponent,
     PartyListComponent,
-    InfoComponent
+    InfoComponent,
+    UnitPipe
   ],
   imports: [
     BrowserModule,

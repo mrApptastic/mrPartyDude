@@ -27,4 +27,15 @@ export class PartyListComponent implements OnInit {
     }
     console.log(this.partyArray);
   }
+
+  getUniqueParticipants(party: Party): number {
+    if (party) {
+      const ids = party?.messages?.map(x => x.clientuniqueid);
+      const unique = [...new Set(ids)];
+
+      return unique?.length;
+    }
+
+    return 0;
+  }
 }

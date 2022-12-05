@@ -95,7 +95,6 @@ export class ChatRoomComponent implements OnInit {
       this.sendMessage();
 
       setTimeout(() => {
-        console.log(this.myParty);
         this.setParty(this.myParty);
       }, 400);
     }

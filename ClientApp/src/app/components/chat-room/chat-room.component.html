@@ -81,6 +81,7 @@
   </div>
   <hr/>
   <h3 class="chat_header">Alcohol Chat</h3>
+  <br/>
   <div class="messaging">
     <div class="inbox_msg">
       <div class="mesgs">
@@ -91,19 +92,19 @@
             <div class="incoming_msg_img"> </div>
             <div class="received_msg">
               <div class="received_withd_msg">
-                <p>
+                <span>
                  {{msg.message}}
-                </p>
-                <span class="time_date"> {{msg.date | date : 'dd-MM-yy HH:mm:ss'}} </span>
+                </span><br/>
+                <span class="time_date"> {{msg.date | date : 'dd-MM-yy HH:mm:ss'}} </span><br/><br/>
               </div>
             </div>
           </div>
           <div class="outgoing_msg" *ngIf="msg.type == 'sent'">
             <div class="sent_msg">
-              <p>
+              <span>
                   {{msg.message}}
-              </p>
-              <span class="time_date"> {{msg.date | date : 'dd-MM-yy HH:mm:ss'}}</span>
+              </span><br/>
+              <span class="time_date"> {{msg.date | date : 'dd-MM-yy HH:mm:ss'}}</span><br/><br/>
             </div>
           </div>
           </div>
