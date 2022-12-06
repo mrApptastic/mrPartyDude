@@ -13,7 +13,7 @@ import { ChatService } from 'src/app/services/chat-service';
 })
 export class ChatRoomComponent implements OnInit {
   txtMessage = "";
-  uniqueID: string = new Date().getTime().toString();
+
   message = new Message();
   selectedDrink: string;
   drinks = new Array<Beverage>();
@@ -149,7 +149,7 @@ export class ChatRoomComponent implements OnInit {
   sendMessage(): void {
     if (this.txtMessage) {
       this.message = new Message();
-      this.message.clientuniqueid = this.uniqueID;
+      this.message.clientuniqueid = this.myParty.start.toString();
       this.message.type = "sent";
       this.message.message = (this.myParty?.name ? (this.myParty?.name + ": ") : "") + this.txtMessage;
       this.message.date = new Date();
@@ -163,7 +163,7 @@ export class ChatRoomComponent implements OnInit {
 
     this.chatService.messageReceived.subscribe((message: Message) => {
       this._ngZone.run(() => {
-        if (message.clientuniqueid !== this.uniqueID) {
+        if (message.clientuniqueid !== this.myParty.start.toString()) {
           message.type = "received";
           this.myParty.messages.unshift(message);
           this.setParty(this.myParty);
