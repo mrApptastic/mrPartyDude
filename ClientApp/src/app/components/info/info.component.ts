@@ -107,37 +107,4 @@ export class InfoComponent implements OnInit {
   setParty(party: Party): void {
     localStorage.setItem("myParty", JSON.stringify(party));
   }
-
-//   upload (): void {
-//     document.getElementById('fileBandit').click();
-//   }
-
-//   changeImage(): void {
-
-//     let ctx;
-// setTimeout(() => {
-//   ctx = document.getElementById('uploadCanvas').getContext('2d');
-// });
-//     const input = document.getElementById('fileBandit');
-//     const area = document.getElementById('uploadCanvas');
-//     const huhu = new Image();
-//     if (input.files && input.files[0]) {
-//       var reader = new FileReader();
-//       reader.onload = function (e) {
-//         huhu.src = e.target.result;
-//         ctx.clearRect(0, 0, area.width, area.height);
-//         ctx.font = '30px Arial';
-//         ctx.fillStyle = '#FFFFFF';
-//         ctx.fillText('Loading Image...', 30, 50);
-//         setTimeout(() => {
-//           area.width = huhu.width;
-//           area.height = huhu.height;
-//           ctx.clearRect(0, 0, area.width, area.height);
-//           ctx.drawImage(huhu, 0, 0, huhu.width, huhu.height);
-//         }, 1000);
-//       };
-//       reader.readAsDataURL(input.files[0]);
-//       this.imageLoaded = true;
-// //     }
-//   }
 }

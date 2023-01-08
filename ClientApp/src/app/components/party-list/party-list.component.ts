@@ -25,7 +25,6 @@ export class PartyListComponent implements OnInit {
     } else {
       this.partyArray = new Array();
     }
-    console.log(this.partyArray);
   }
 
   getUniqueParticipants(party: Party): number {
