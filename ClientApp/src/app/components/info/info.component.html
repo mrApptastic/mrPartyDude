@@ -1,8 +1,4 @@
 <div class="container">
-  <!-- <div>
-    <canvas id="uploadCanvas" (click)="upload()"></canvas>
-    <input id="fileBandit" type="file" (change)="changeImage()" />
-  </div> -->
   <div class="row mt-3">
     <div class="ml-3 d-flex justify-content-center align-items-center">
       <input type="checkbox" [(ngModel)]="myParty.showInfo" (ngModelChange)="setParty(myParty)" />
@@ -16,11 +12,19 @@
       <label>Navn:</label>
       <input class="w-100" type="text" placeholder="Navn" [(ngModel)]="myParty.name" (ngModelChange)="setParty(myParty)" />
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
+      <label>Avatar:</label>
+      <br/>
+      <canvas #uploadCanvas id="uploadCanvas" (click)="upload()" height="100" width="100"></canvas>
+      <input id="fileBandit" type="file" (change)="changeImage()" />
+    </div>
+  </div>
+  <div class="row" [hidden]="!myParty?.showInfo">
+    <div class="col-md-8">
       <label>Vægt:</label>
       <input  class="w-100" type="number" placeholder="Vægt" [(ngModel)]="myParty.weight" (ngModelChange)="setParty(myParty)" />
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <label for="genderCheck">Kvinde:</label>
       <input type="checkbox" name="genderCheck" [(ngModel)]="myParty.gender" (ngModelChange)="setParty(myParty)" />
     </div>

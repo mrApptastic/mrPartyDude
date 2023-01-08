@@ -3,6 +3,7 @@ import { Beverage } from "./beverage";
 
 export interface Party {
   start: number;
+  avatar: string;
   name: string;
   gender: boolean;
   weight: number;
