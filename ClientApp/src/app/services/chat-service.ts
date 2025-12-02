@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from "@angular/core";
-import { HubConnection, HubConnectionBuilder } from "@aspnet/signalr";
+import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
 import { Message } from "../models/message";
 
 @Injectable()

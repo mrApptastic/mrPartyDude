@@ -3,7 +3,8 @@ import { Beverage } from '../interfaces/beverage';
 import { AlcoholService } from '../services/alcohol.service';
 
 @Pipe({
-  name: 'unit'
+  name: 'unit',
+  standalone: false
 })
 export class UnitPipe implements PipeTransform {
   constructor(private alcohol: AlcoholService) {}

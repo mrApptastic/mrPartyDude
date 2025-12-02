@@ -6,6 +6,7 @@ import { ChatService } from 'src/app/services/chat-service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  standalone: false
 })
 export class HomeComponent {
   txtMessage = "";
