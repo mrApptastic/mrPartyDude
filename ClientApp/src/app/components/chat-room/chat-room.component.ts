@@ -10,6 +10,7 @@ import { ChatService } from 'src/app/services/chat-service';
 @Component({
   selector: 'app-chat-room',
   templateUrl: './chat-room.component.html',
+  standalone: false
 })
 export class ChatRoomComponent implements OnInit {
   txtMessage = "";

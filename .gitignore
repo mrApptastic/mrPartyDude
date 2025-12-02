@@ -229,3 +229,10 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Angular build artifacts in wwwroot
+wwwroot/*.js
+wwwroot/*.css
+wwwroot/*.html
+wwwroot/*.txt
+wwwroot/assets/mr.png

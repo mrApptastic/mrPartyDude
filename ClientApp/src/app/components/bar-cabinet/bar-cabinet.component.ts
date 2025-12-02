@@ -5,7 +5,8 @@ import { BeverageService } from 'src/app/services/beverage.service';
 @Component({
   selector: 'app-BarCabinet',
   templateUrl: './bar-cabinet.component.html',
-  styleUrls: ['./bar-cabinet.component.scss']
+  styleUrls: ['./bar-cabinet.component.scss'],
+  standalone: false
 })
 export class BarCabinetComponent implements OnInit {
   drinks: Beverage[];

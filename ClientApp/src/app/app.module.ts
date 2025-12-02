@@ -11,13 +11,13 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
-import { MrMr2Module } from 'mr-mr2';
 import { BarCabinetComponent } from './components/bar-cabinet/bar-cabinet.component';
 import { ChatService } from './services/chat-service';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { PartyListComponent } from './components/party-list/party-list.component';
 import { InfoComponent } from './components/info/info.component';
 import { UnitPipe } from './pipes/unit.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { UnitPipe } from './pipes/unit.pipe';
     ChatRoomComponent,
     PartyListComponent,
     InfoComponent,
-    UnitPipe
+    UnitPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,6 @@ import { UnitPipe } from './pipes/unit.pipe';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    MrMr2Module,
     ToastrModule.forRoot()
   ],
   providers: [

@@ -4,7 +4,8 @@ import { Party } from 'src/app/interfaces/party';
 @Component({
   selector: 'app-party-list',
   templateUrl: './party-list.component.html',
-  styleUrls: ['./party-list.component.scss']
+  styleUrls: ['./party-list.component.scss'],
+  standalone: false
 })
 export class PartyListComponent implements OnInit {
   partyArray: Party[];

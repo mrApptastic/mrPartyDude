@@ -1,3 +1,5 @@
+@import 'ngx-toastr/toastr';
+
 $body-bg: #4242e7;
 $body-color: #a5a5ff;
 
@@ -7,11 +9,7 @@ $theme-colors: (
   "danger": #ff4136
 );
 
-@import '~ngx-toastr/toastr';
-
-@import "~bootstrap/scss/bootstrap";
-
-@import '~ngx-toastr/toastr-bs4-alert';
+@import "bootstrap/scss/bootstrap";
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
